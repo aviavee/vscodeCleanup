@@ -8,7 +8,7 @@ When using Visual Studio Code's Remote Containers feature, the VS Code Server is
 
 ## How to Use
 
-``` Adding the Cleanup Script to an Existing Container
+Adding the Cleanup Script to an Existing Container
 
 If you have an existing container you'd like to clean up before committing, you can add the cleanup script directly to it. Here's how:
 
