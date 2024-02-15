@@ -6,6 +6,19 @@ This repository contains a script designed to clean up Visual Studio Code Server
 
 When using Visual Studio Code's Remote Containers feature, the VS Code Server is automatically installed inside the container to facilitate the remote development environment. While this is extremely useful for development, leaving the VS Code Server files in the image can unnecessarily increase the size of the committed Docker images. Running this cleanup script before committing an image ensures that these files are removed, maintaining a leaner image that contains only your application and its dependencies.
 
+## Script Functionality
+
+The cleanup script performs the following actions to ensure your Docker image remains clean and efficient:
+
+1. **Kills All VS Code Server Processes**: It searches for and terminates any running processes associated with the VS Code Server. This step ensures that no VS Code Server processes remain active, which could otherwise persist unwanted data in the image.
+
+2. **Removes VS Code Server Directories and Files**: The script deletes the `.vscode-server` directory, which contains the VS Code Server installation and data, from both the root user's home directory and any other user directories where it might be installed. This removal significantly reduces the image size and removes unnecessary files.
+
+3. **Cleans Temporary and Cache Files**: Additionally, the script identifies and deletes any temporary or cache files related to the VS Code Server. This step further cleans the image, ensuring that only necessary files are retained.
+
+By performing these actions, the script helps maintain a lean Docker image, free from the bloat of development tools like the VS Code Server, which are not typically needed in production environments or when sharing images.
+
+
 ## How to Use
 
 Adding the Cleanup Script to an Existing Container
